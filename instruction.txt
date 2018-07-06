@@ -1,0 +1,86 @@
+Kitchen Stories
+
+		--mint.ui
+
+
+menu.vue--li点击变色
+
+		--滚动限制
+	
+			//禁止页面滑动
+			var mo=function(e){e.preventDefault();};
+			document.body.style.overflow='hidden';        
+        	document.addEventListener("touchmove",mo,false);
+        	
+        	/***取消滑动限制***/
+			var mo=function(e){e.preventDefault();};
+			document.body.style.overflow='';//出现滚动条
+        	document.removeEventListener("touchmove",mo,false); 
+        	
+
+home.vue--mint.ui轮播(mt-swipe-item)、数据
+		
+		--左右滑动(新增左右滑动条  然后隐藏)
+		
+		overflow-x: scroll;
+		选择器::-webkit-scrollbar {
+			width: 0;
+			height: 0;
+			background-color: #fff;
+		}
+		
+		--图片上叠加半透明颜色层 (绝对定位实现)
+
+setting.vue --mint.ui.按钮css(mt-switch、mt-redio)、修改ui样式(weui.css)、
+
+		   	--监听滚动事件
+		   	methods:{
+		   		handleScroll(){
+					var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+				}
+		   	},
+		   	mounted() {
+				window.addEventListener('scroll', this.handleScroll)
+			},
+			
+			//移除监听事件
+			destroyed () {
+				window.removeEventListener('scroll', this.handleScroll)
+			},
+
+sort-link.vue--通过点击sort.vue传id,加载数据(路由传递参数)  this.index=this.$route.params.id
+
+			 --筛选(v-for="" v-if="条件")  实参传值classSort('主菜')
+			 
+welcom.vue --两秒后进入主页(在app.vue定义页面加载时跳转welcome)
+			
+			mounted(){
+				var _this=this;
+				window.setTimeout(function(){
+			        _this.$router.push("/home")
+			    },2200)
+			}
+				
+details.vue-- 通过传id加载数据、监听出现环形进度条	
+
+			--计时器
+
+搜索框--循环需满足条件search[i].title.indexOf(msg)!=-1才加载
+
+	  --通过oUl.children.length判断有没有结果
+	  
+
+video.vue--视频  vue-video-player
+
+
+		--手机横竖
+		
+		屏幕旋转时会有orientationchange事件。你可以给body元素增加此事件的监听：
+　　		<body onorientationchange="updateOrientation();">
+
+		@media screen and (orientation:portrait) {
+			css[竖向定义样式]
+		}
+		@media screen and (orientation:landscape) {
+			css[横向定义样式]
+		}
